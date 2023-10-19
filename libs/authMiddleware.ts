@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 const authMiddleware = ({
   publicRoutes = [],
 }: {
-  publicRoutes: (string | undefined)[];
+  publicRoutes?: (string | undefined)[];
 }) => {
   return async (req: NextRequest) => {
     const token = req.cookies.get("hanko")?.value;
@@ -14,16 +14,19 @@ const authMiddleware = ({
     );
 
     try {
-      /** only allow access to public routes */
+      /** only allow access to public routes and sign-in route */
       let isPublicRoutes = false;
+      console.log(publicRoutes);
 
-      publicRoutes.forEach((r) => {
-        r &&
-          (isPublicRoutes ||=
-            r === "/"
-              ? req.nextUrl.pathname === r
-              : req.nextUrl.pathname.startsWith(r));
-      });
+      [...publicRoutes, process.env.NEXT_PUBLIC_HANKO_SIGN_IN_URL].forEach(
+        (r) => {
+          r &&
+            (isPublicRoutes ||=
+              r === "/"
+                ? req.nextUrl.pathname === r
+                : req.nextUrl.pathname.startsWith(r));
+        }
+      );
 
       if (!isPublicRoutes) {
         const verifiedJWT = await jose.jwtVerify(token || "", JWKS);
