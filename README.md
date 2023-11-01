@@ -1,8 +1,12 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AI Chat and Code Generator SaaS using Next 13, TailwindCSS + DaisyUI, OpenAI, and Hanko Auth Solution
+
+This web app is using Next 13. The api code is in "app/api" folder.
 
 ## Getting Started
 
-First, run the development server:
+Clone the repo and subtitue environment variable values with your own.
+
+and then run the development server:
 
 ```bash
 npm run dev
@@ -16,21 +20,22 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Hanko Auth Solution
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Fist, you must have hanko account. Just head to https://www.hanko.io/ and then sign in with your email (if the email has not been registered, it will be registered)
 
-## Learn More
+I use the awesome Hanko for auth service. I apply my own recipe on using Hanko, mimicking other auth solution.
 
-To learn more about Next.js, take a look at the following resources:
+To use Hanko, I create HankoProvider to register Hanko API URL and use it at top "app/layout.tsx", therefore we can use Hanko Auth and Hanko Profile elements at its children level.To use hanko at client elements, I create react context. All its code is on HankoProvider.tsx.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To guard protected routes, I create middleware at next root folder and also create "authMiddleware.ts" which consist of all the logic for authentication at the server side.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Other services you must have been registered
 
-## Deploy on Vercel
+OpenAI, Stripe and Crisp.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you want to deploy the web app, you can register free account at https://vercel.com/ and then for the database you can get free MySQL database at https://planetscale.com/
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Info
+
+I hope I can manage to finish my story about creating this web app at medium site. I will update this README if it has been published.
