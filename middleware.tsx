@@ -1,7 +1,7 @@
 import authMiddleware from "@/libs/authMiddleware";
 
 export default authMiddleware({
-  publicRoutes: ["/", "/about"],
+  publicRoutes: ["/", "/api/stripe-webhook"],
 });
 
 export const config = {

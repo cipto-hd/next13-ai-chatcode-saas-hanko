@@ -2,32 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 html,
 body,
 :root {
   height: 100%;
+}
+
+.btn-nav {
+  @apply btn-sm font-normal capitalize hover:font-semibold transform;
+}
+.btn-premium,
+.badge-premium {
+  @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white border-0;
+}
+
+.progress-premium::-moz-progress-bar {
+  --tw-bg-opacity: 1;
+  background-color: theme("colors.violet.600");
+  border-radius: var(--rounded-box, 1rem /* 16px */);
+}
+.progress-premium:indeterminate {
+  --progress-color: theme("colors.violet.600");
+}
+.progress-premium::-webkit-progress-value {
+  --tw-bg-opacity: 1;
+  background-color: theme("colors.violet.600");
+}
+
+hanko-auth,
+hanko-profile {
+  /* Color Scheme */
+  --color: theme("colors.gray.900"); /* customized */
+  --color-shade-1: theme("colors.red.700"); /* customized */
+  --color-shade-2: theme("colors.red.200"); /* customized */
+
+  --brand-color: theme("colors.red.600"); /* customized */
+  --brand-color-shade-1: theme("colors.red.700"); /* customized */
+  --brand-contrast-color: white;
+
+  --background-color: theme("colors.white"); /* customized */
+  --error-color: #e82020;
+  --link-color: #506cf0;
+
+  /* Font Styles */
+  --font-weight: 400;
+  --font-size: 16px;
+  --font-family: sans-serif;
+
+  /* Border Styles */
+  --border-radius: 20px; /* customized */
+  --border-style: solid;
+  --border-width: 1px;
+
+  /* Item Styles */
+  --item-height: 34px;
+  --item-margin: 0.5rem 0;
+
+  /* Container Styles */
+  --container-padding: 30px;
+  --container-max-width: 410px;
+
+  /* Headline Styles */
+  --headline1-font-size: 24px;
+  --headline1-font-weight: 600;
+  --headline1-margin: 0 0 1rem;
+
+  --headline2-font-size: 16px;
+  --headline2-font-weight: 600;
+  --headline2-margin: 1rem 0 0.5rem;
+
+  /* Divider Styles */
+  --divider-padding: 0 42px;
+  --divider-visibility: visible;
+
+  /* Link Styles */
+  --link-text-decoration: none;
+  --link-text-decoration-hover: underline;
+
+  /* Input Styles */
+  --input-min-width: 14em;
+
+  /* Button Styles */
+  --button-min-width: max-content;
 }

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { useHanko } from "./HankoProvider";
 
-export const Logout = () => {
+const Logout = () => {
   const router = useRouter();
   const hanko = useHanko();
 
@@ -21,10 +21,10 @@ export const Logout = () => {
       });
   };
   return (
-    <>
-      <button className="text-gray-50" type="button" onClick={logout}>
-        Logout
-      </button>
-    </>
+    <button type="button" onClick={logout} className="btn btn-nav">
+      Logout
+    </button>
   );
 };
+
+export default Logout;

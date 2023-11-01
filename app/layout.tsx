@@ -3,13 +3,15 @@ import "./globals.css";
 
 import { Inter } from "next/font/google";
 
+import { CrispProvider } from "@/components/CrispProvider";
 import HankoProvider from "@/components/HankoProvider";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import ProModal from "@/components/ProModal";
+import ToasterProvider from "@/components/ToasterProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AI ChatCode SaaS",
+  title: "Wasis - AI ChatCode SaaS",
   description: "Awesome AI SaaS to ask anything and generate code",
 };
 
@@ -20,11 +22,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} text-base-content`}>
         <HankoProvider>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            {children}
-          </ThemeProvider>
+          {children}
+          <ProModal />
+          <ToasterProvider />
+          <CrispProvider />
         </HankoProvider>
       </body>
     </html>
